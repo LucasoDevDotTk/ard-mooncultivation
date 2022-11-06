@@ -50,13 +50,13 @@ const posts = await getAllPosts();
           <span class="font-semibold text-gray-400 uppercase">Our Blog</span>
         </div>
       </div>
-      <div>
-        <ul class="m-4 text-blue-800">
+      <div class="max-w-md mx-auto">
+        <ul class="flex justify-center m-4 text-white">
           {
             posts.map((post) => (
-              <li class="flex flex-col">
-                <a href={`/posts/${post.slug.current}`}>
-                  <img src={getSanityImage(post.mainImage).url()} alt="" />
+              <li class="flex flex-col w-60 border-2 rounded-lg hover:border-finePink transition-all ease-in-out">
+                <a class="m-5" href={`/posts/${post.slug.current}`}>
+                  <img class="mb-4 rounded-lg" src={getSanityImage(post.mainImage).url()} alt="" />
                   {post.title}
                 </a>
               </li>
