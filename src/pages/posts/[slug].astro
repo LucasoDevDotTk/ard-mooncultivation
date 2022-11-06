@@ -1,0 +1,28 @@
+---
+import { getAllPosts } from "../../sanity/api.js";
+import { getSanityImage } from "../../sanity/getSanityImage.js";
+
+import PortableText from "../../components/portableText.astro";
+
+export async function getStaticPaths() {
+  const allBlogPosts = await getAllPosts();
+  return allBlogPosts.map(post => ({ params: { slug: post.slug.current }, props: { post } }));
+};
+
+const { post } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{post.title}</title>
+</head>
+<body>
+    <img src={getSanityImage(post.mainImage).url()} alt="">
+    <h1 class="font-inter font-bold text-3xl">{post.title}</h1>
+    <PortableText portableText={post.body} />
+</body>
+</html>

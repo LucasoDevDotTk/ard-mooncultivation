@@ -1,5 +1,4 @@
 import { defineConfig } from 'astro/config';
-import { useSanityClient } from 'astro-sanity';
 
 // https://astro.build/config
 import sanity from "astro-sanity";
@@ -11,7 +10,7 @@ import tailwind from "@astrojs/tailwind";
 export default defineConfig({
   integrations: [tailwind(), sanity({
     projectId: 'o1hobr9d',
-    dataset: 'production',
+    dataset: 'blogs',
     apiVersion: '2021-03-25',
     useCdn: true,
   })]
