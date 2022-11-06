@@ -2,34 +2,67 @@
 import { getAllPosts } from "../sanity/api.js";
 import { getSanityImage } from "../sanity/getSanityImage.js";
 
+import MainLayout from "../layouts/MainLayout.astro";
+
 import "../base.css";
 
 const posts = await getAllPosts();
 ---
-
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ARD Mooncultivation Scientific Blog</title>
-  </head>
-  <body class="font-inter max-w-md text-center mx-auto">
-    <h1 class="text-3xl">Mooncultivation Blog</h1>
-    <div>
-      <ul class="m-4 text-blue-800">
-        {
-          posts.map((post) => (
-            <li class="flex flex-col">
-              <a href={`/posts/${post.slug.current}`}>
-                <img src={getSanityImage(post.mainImage).url()} alt="" />
-				{post.title}
-              </a>
-            </li>
-          ))
-        }
-      </ul>
-    </div>
-  </body>
-</html>
+<MainLayout title="ARD Mooncultivation">
+    <section>
+      <div
+        class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-12"
+      >
+        <a
+          href="#"
+          class="inline-flex justify-between items-center py-1 px-1 pr-4 mb-7 text-sm rounded-full bg-gray-800 text-white hover:bg-gray-700"
+        >
+          <span
+            class="text-xs bg-finePink rounded-full text-white px-4 py-1.5 mr-3"
+            >New</span
+          >
+          <span class="text-sm font-medium"
+            >We make blogs every other week -&#62;</span>
+        </a>
+        <h1
+          class="mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl lg:text-6xl text-brightBlue"
+        >
+          Resarching for the future
+        </h1>
+        <p
+          class="mb-8 text-lg font-normal lg:text-xl sm:px-16 xl:px-48 text-white"
+        >
+          We are a group of students from Akademiet Realfagsskole Drammen, Norway, aiming to find new ways to cultivate and harvest on the moon.
+        </p>
+        <div
+          class="flex flex-col mb-8 lg:mb-16 space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4"
+        >
+          <a
+            href="#"
+            class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white border border-whiteYellow hover:border-2 rounded-lg transition-all ease-in-out"
+          >
+            Learn more -&#62;
+          </a>
+        </div>
+        <div
+          class="px-4 mx-auto text-center md:max-w-screen-md lg:max-w-screen-lg lg:px-36"
+        >
+          <span class="font-semibold text-gray-400 uppercase">Our Blog</span>
+        </div>
+      </div>
+      <div>
+        <ul class="m-4 text-blue-800">
+          {
+            posts.map((post) => (
+              <li class="flex flex-col">
+                <a href={`/posts/${post.slug.current}`}>
+                  <img src={getSanityImage(post.mainImage).url()} alt="" />
+                  {post.title}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+</MainLayout>
