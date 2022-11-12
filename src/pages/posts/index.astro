@@ -1,0 +1,27 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+
+import { getSanityImage } from "../../sanity/getSanityImage.js";
+
+import { getAllPosts } from "../../sanity/api.js";
+
+const posts = await getAllPosts();
+
+---
+
+<MainLayout>
+    <div class="max-w-md mx-auto">
+        <ul class="flex justify-center m-4 text-white">
+          {
+            posts.map((post) => (
+              <li class="flex flex-col w-96 border-2 rounded-lg hover:border-finePink transition-all ease-in-out m-5">
+                <a class="m-5" href={`/posts/${post.slug.current}`}>
+                  <img class="mb-4 rounded-lg" src={getSanityImage(post.mainImage).url()} alt="" />
+                  {post.title}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+</MainLayout>

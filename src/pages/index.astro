@@ -1,20 +1,11 @@
 ---
-import { getAllPosts } from "../sanity/api.js";
-import { getSanityImage } from "../sanity/getSanityImage.js";
-
 import MainLayout from "../layouts/MainLayout.astro";
-
-import "../base.css";
-
-const posts = await getAllPosts();
 ---
 <MainLayout title="ARD Mooncultivation">
-    <section>
-      <div
-        class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-12"
-      >
+    <section class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-12">
+      <div>
         <a
-          href="#"
+          href="/posts"
           class="inline-flex justify-between items-center py-1 px-1 pr-4 mb-7 text-sm rounded-full bg-gray-800 text-white hover:bg-gray-700"
         >
           <span
@@ -44,25 +35,40 @@ const posts = await getAllPosts();
             Learn more -&#62;
           </a>
         </div>
-        <div
-          class="px-4 mx-auto text-center md:max-w-screen-md lg:max-w-screen-lg lg:px-36"
-        >
-          <span class="font-semibold text-gray-400 uppercase">Our Blog</span>
-        </div>
       </div>
-      <div class="max-w-md mx-auto">
-        <ul class="flex justify-center m-4 text-white">
-          {
-            posts.map((post) => (
-              <li class="flex flex-col w-96 border-2 rounded-lg hover:border-finePink transition-all ease-in-out m-5">
-                <a class="m-5" href={`/posts/${post.slug.current}`}>
-                  <img class="mb-4 rounded-lg" src={getSanityImage(post.mainImage).url()} alt="" />
-                  {post.title}
-                </a>
-              </li>
-            ))
-          }
-        </ul>
+
+      <div class="flex justify-center">
+        <img src="/hero_image.svg" alt="">
       </div>
     </section>
+
+    <section>
+      <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
+          <div class="max-w-screen-md">
+              <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Never been done before!</h2>
+              <p class="mb-8 font-light text-gray-500 sm:text-xl dark:text-gray-400">
+                We are researching a new area for humans, very few operations and scientific research has been done about cultivation on the moon. Our mission is to find what type of plants that can be planted the moon, and what types of plants that are most usefull up there. 
+              </p>
+          </div>
+      </div>
+  </section>
+
+  <section>
+    <div class="gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6">
+        <img class="w-full dark:hidden" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/cta-dashboard-mockup.svg" alt="dashboard image">
+        <img class="w-full hidden dark:block" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/cta-dashboard-mockup-dark.svg" alt="dashboard image">
+        <div class="mt-4 md:mt-0">
+            <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Sharing the research with NASA and you!</h2>
+            <p class="mb-6 font-light text-gray-500 md:text-lg dark:text-gray-400">We share our research with NASA and in our blog. There is no subscription required, because it's all free for everyone. We use enterprise level research tools and we have weekly reporting of new findings.</p>
+            <div>
+            <a
+              href="/posts"
+              class="inline-flex items-center py-3 px-5 text-base font-medium text-center text-white border border-whiteYellow hover:border-2 rounded-lg transition-all ease-in-out"
+            >
+              Our Blog -&#62;
+            </a>
+          </div>
+        </div>
+    </div>
+</section>
 </MainLayout>
