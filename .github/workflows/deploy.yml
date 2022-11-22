@@ -7,7 +7,7 @@ on:
     branches: [ main ]  
 
   schedule:
-    - cron: '* 5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22 * * *'
+    - cron: '30 * * * *'
   # Allows you to run this workflow manually from the Actions tab on GitHub.
   workflow_dispatch:
   
